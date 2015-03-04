@@ -1,0 +1,1 @@
+body{background-color:red}main section:first-of-type div:first-child{width:25%}main section:first-of-type div:last-child{width:75%}main section div{width:33.3333%;float:left}main section:last-of-type div{width:50%}main section:before,main section:after{content:"";display:block;clear:both}
