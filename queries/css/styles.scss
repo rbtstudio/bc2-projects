@@ -1,28 +1,106 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+$mainColor: hsl(203, 10%, 47%);
+
 body {
-    background-color: red;
+    background-color: $mainColor;
+    font-family: sans-serif;
+    font-weight: 200;
+    line-height: 1.25;
+}
+h1 {
+    font-weight: 400;
+}
+ul {
+    list-style: none;
+}
+button {
+    $btnDark: complement(darken($mainColor, 15));
+    $btnLite: complement(lighten($mainColor, 20));
+
+    $btnDarkHover: lighten($btnDark, 10);
+    $btnLiteHover: lighten($btnLite, 10);
+
+    cursor: pointer;
+    min-width: 20%;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $btnDark;
+
+    background: $btnLite;
+    background: -moz-linear-gradient(top,  $btnLite 0%, $btnDark 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$btnLite), color-stop(100%,$btnDark));
+    background: -webkit-linear-gradient(top,  $btnLite 0%,$btnDark 100%);
+    background: -o-linear-gradient(top,  $btnLite 0%,$btnDark 100%);
+    background: -ms-linear-gradient(top,  $btnLite 0%,$btnDark 100%);
+    background: linear-gradient(to bottom,  $btnLite 0%,$btnDark 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$btnLite', endColorstr='$btnDark',GradientType=0 );
+
+    &:hover {
+        color: white;
+        border-color: $btnDarkHover;
+        background: $btnLiteHover;
+        background: -moz-linear-gradient(top,  $btnLiteHover 0%, $btnDarkHover 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$btnLiteHover), color-stop(100%,$btnDarkHover));
+        background: -webkit-linear-gradient(top,  $btnLiteHover 0%,$btnDarkHover 100%);
+        background: -o-linear-gradient(top,  $btnLiteHover 0%,$btnDarkHover 100%);
+        background: -ms-linear-gradient(top,  $btnLiteHover 0%,$btnDarkHover 100%);
+        background: linear-gradient(to bottom,  $btnLiteHover 0%,$btnDarkHover 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$btnLiteHover', endColorstr='$btnDarkHover',GradientType=0 );
+    }
+}
+
+header {
+    &:first-of-type {
+        display: block;
+    }
+    &:last-of-type {
+        display: none;
+    }
+    nav {
+        ul {
+            &:before,
+            &:after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+            li {
+                display: inline-block;
+                float: left;
+                width: 25%;
+            }
+        }
+    }
 }
 
 main {
     section:first-of-type {
+        background-image: url("http://images.nationalgeographic.com/wpf/media-live/photos/000/138/overrides/save-the-ocean-tips_13821_600x450.jpg");
+        background-size: cover;
+        background-position: center;
         div:first-child {
             width: 25%;
-            //float: left;
+            color: white;
+            background-color: hsla(0, 0, 0, .5);
         }
         div:last-child {
             width: 75%;
-            //float: left;
         }
     }
     section {
         div {
             width: 33.3333%;
             float: left;
+            padding: 10px;
         }
     }
     section:last-of-type {
         div {
             width: 50%;
-            //float: left;
         }
     }
     section:before,
@@ -37,7 +115,74 @@ main {
 
 
 @media screen and (min-width: 500px) and (max-width: 756px){
+    header:first-of-type {
+        display: none;
+    }
+    header:last-of-type {
+        display: block;
+    }
+    main {
+        section:first-of-type {
+            div:first-child {
+                width: 75%;
+            }
+            div:last-child {
+                width: 25%;
+            }
+        }
+        section {
+            div:first-child,
+            div:last-child {
+                width: 20%;
+            }
+            div {
+                width: 60%;
+            }
+        }
+        section:last-of-type {
+            div:first-child {
+                width: 25%;
+            }
+            div:last-child {
+                width: 75%;
+            }
+        }
+    }
+
 }
 
 @media screen and (max-width: 500px){
+    header {
+        nav {
+            ul {
+                li {
+                    display: block;
+                    width: 100%;
+                    text-align: center;
+                    padding: 10px 0;
+                }
+            }
+        }
+    }
+
+    section {
+        div {
+            width: 100% !important;
+        }
+    }
+    .no-phone {
+        display: none;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
